@@ -1,13 +1,16 @@
 package se.example.Apispring;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "T_FOLDER")
+@NoArgsConstructor
 public class Folder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     long id;
 
     String name;

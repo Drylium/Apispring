@@ -2,20 +2,22 @@ package se.example.Apispring;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 @Getter
 @Setter
 @Entity
 @Table(name = "T_FILE")
+@NoArgsConstructor
 public class File {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    final String name;
-    final int filesize;
-    final String filetype;
-    final byte[] content;
+    private String name;
+    private int filesize;
+    private String filetype;
+    private byte[] content;
 
 
     @ManyToOne
