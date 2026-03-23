@@ -13,8 +13,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
-                .csrf(AbstractHttpConfigurer::disable);
+        http.oauth2Login(oauth -> {
+            oauth.successHandler(((request, response, authentication) -> {
+
+            }));
+        });
+
         return http.build();
     }
 

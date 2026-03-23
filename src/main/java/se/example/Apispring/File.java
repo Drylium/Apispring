@@ -18,6 +18,7 @@ public class File {
     private int filesize;
     private String filetype;
     private byte[] content;
+    private String username;
 
 
     @ManyToOne
