@@ -18,7 +18,8 @@ public class Folder {
     private String name;
     private String username;
 
-    public Folder(String name) {
+    public Folder(String name, String username) {
         this.name = name;
+        this.username = username;
     }
 }

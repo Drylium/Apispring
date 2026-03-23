@@ -25,12 +25,13 @@ public class File {
     @JoinColumn(name = "id_folder")
     private Folder folder;
 
-    public File(String name, int filesize, String filetype, byte[] content, Folder folder) {
+    public File(String name, int filesize, String filetype, byte[] content, Folder folder, String username) {
         this.name = name;
         this.filesize = filesize;
         this.filetype = filetype;
         this.content = content;
         this.folder = folder;
+        this.username = username;
     }
 
 }

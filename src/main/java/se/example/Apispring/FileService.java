@@ -21,27 +21,33 @@ public class FileService implements FileInterface {
 
     @Override
     public void createFolder(String name, String username) {
-        Folder folder = new Folder(name);
-        folder.setUsername(username);
+        Folder folder = new Folder(name, username);
         folderRepository.save(folder);
     }
 
     @Override
     public void upploadFile(String name, byte[] content, String filetype, String foldername, String username) {
         Folder folder = folderRepository.findByNameAndUsername(foldername, username);
+
         if (folder == null) {
-            folder = new Folder(foldername);
+            folder = new Folder(foldername, username);
             folder = folderRepository.save(folder);
         }
-        repository.save(new File(name, content.length, filetype, content, folder));
-        //repository.createFile(name, content, filetype, folder);
+        File file = new File(
+                name,
+                content.length,
+                filetype,
+                content,
+                folder,
+                username
+        );
+        repository.save(file);
     }
+
 
     @Override
     public void deleteFile(Long id, String username) {
-        Optional<File> file = repository.findFileByIdAndUsername(id, username); // Hämta filen
-        // Kolla om den finns
-        // Om den finns, hämta ut filen ur din optional och gör en delete
+        Optional<File> file = repository.findFileByIdAndUsername(id, username);
         file.ifPresent(value -> repository.delete(value));
     }
 
