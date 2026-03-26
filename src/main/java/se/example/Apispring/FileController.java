@@ -26,7 +26,6 @@ public class FileController {
         this.fileinterface = fileinterface;
     }
 
-    // 📁 Create folder
     @PostMapping("folder")
     public ResponseEntity<EntityModel<String>> createFolder(
             @RequestParam String name,
@@ -46,7 +45,6 @@ public class FileController {
         return ResponseEntity.status(HttpStatus.CREATED).body(model);
     }
 
-    // 📄 Upload file
     @PostMapping("file")
     public ResponseEntity<EntityModel<String>> uploadFiles(
             @RequestParam String name,
@@ -67,7 +65,6 @@ public class FileController {
         return ResponseEntity.status(HttpStatus.CREATED).body(model);
     }
 
-    // 🔍 Get file by ID
     @GetMapping("file")
     public ResponseEntity<EntityModel<File>> getFile(
             @RequestParam Long id,
@@ -86,7 +83,6 @@ public class FileController {
         return ResponseEntity.ok(model);
     }
 
-    // 🗑 Delete file
     @DeleteMapping("file")
     public ResponseEntity<EntityModel<String>> deleteFile(
             @RequestParam Long id,
@@ -104,7 +100,6 @@ public class FileController {
         return ResponseEntity.ok(model);
     }
 
-    // 🔎 Search files by name
     @GetMapping("file/name")
     public ResponseEntity<CollectionModel<EntityModel<File>>> getFilesByName(
             @RequestParam String name,
